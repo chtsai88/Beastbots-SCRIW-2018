@@ -10,6 +10,8 @@ package org.usfirst.frc.team4795.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4795.robot.Robot;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 public class ArcadeDrive extends Command {
 
 	public ArcadeDrive() {
@@ -21,13 +23,12 @@ public class ArcadeDrive extends Command {
 	}
 
 	protected void execute() {
-
-		double left = Robot.oi.getLeftJoyY();
-		double right = Robot.oi.getLeftJoyY();
-
+		
+        
 		double turn = Robot.oi.getLeftJoyY() == 0.0 ? Robot.oi.getRightJoyX() * .8 : Robot.oi.getRightJoyX() * 0.4;
 
-		Robot.drivebase.setMotors((left + turn) * 0.6, (right - turn) * 0.6);
+		Robot.drivebase.setMotors((Robot.oi.getLeftJoyY() + turn) * 0.7, (Robot.oi.getLeftJoyY() - turn) * 0.7);
+		
 	}
 
 	protected boolean isFinished() {

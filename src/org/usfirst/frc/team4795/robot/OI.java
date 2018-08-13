@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class OI {
 
-	private static final double DEADZONE = 0.05;
+	private static final double DEADZONE = 0.2;
 
 	public final Joystick CONTROLLER = new Joystick(RobotMap.MAIN_CONTROLLER.value);
 

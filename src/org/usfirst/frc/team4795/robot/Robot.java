@@ -12,6 +12,8 @@ import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
 import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
@@ -54,7 +56,7 @@ public class Robot extends TimedRobot {
 	}
 
 	public static void initTalon(TalonSRX motor) {
-		motor.setNeutralMode(NeutralMode.Coast);
+		motor.setNeutralMode(NeutralMode.Brake);
 		motor.neutralOutput();
 		motor.setSensorPhase(false);
 		motor.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, 0);
@@ -63,5 +65,12 @@ public class Robot extends TimedRobot {
 		motor.configNominalOutputReverse(0.0, 0);
 		motor.configClosedloopRamp(0.5, 0);
 	}
-
+	public static void initVictor(VictorSPX motor) {
+		motor.setNeutralMode(NeutralMode.Brake);
+		motor.neutralOutput();
+		motor.setSensorPhase(false);
+		motor.configNominalOutputForward(0.0, 0);
+		motor.configNominalOutputReverse(0.0, 0);
+		motor.configClosedloopRamp(0.5, 0);
+	}
 }

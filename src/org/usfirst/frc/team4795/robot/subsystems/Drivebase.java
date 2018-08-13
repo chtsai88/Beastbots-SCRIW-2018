@@ -9,38 +9,47 @@ package org.usfirst.frc.team4795.robot.subsystems;
 
 import org.usfirst.frc.team4795.robot.Robot;
 import org.usfirst.frc.team4795.robot.RobotMap;
+import org.usfirst.frc.team4795.robot.commands.ArcadeDrive;
+
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Drivebase extends Subsystem {
 
 	private TalonSRX rightMotorOne;
-	private TalonSRX rightMotorTwo;
-	private TalonSRX rightMotorThree;
+	private VictorSPX rightMotorTwo;
+	private VictorSPX rightMotorThree;
 	private TalonSRX leftMotorOne;
 	private TalonSRX leftMotorTwo;
-	private TalonSRX leftMotorThree;
+	private VictorSPX leftMotorThree;
 
 	public Drivebase() {
 		leftMotorOne = new TalonSRX(RobotMap.LEFT_MOTOR_ONE.value);
 		leftMotorTwo = new TalonSRX(RobotMap.LEFT_MOTOR_TWO.value);
-		leftMotorThree = new TalonSRX(RobotMap.LEFT_MOTOR_THREE.value);
+		leftMotorThree = new VictorSPX(RobotMap.LEFT_MOTOR_THREE.value);
 		rightMotorOne = new TalonSRX(RobotMap.RIGHT_MOTOR_ONE.value);
-		rightMotorTwo = new TalonSRX(RobotMap.RIGHT_MOTOR_TWO.value);
-		rightMotorThree = new TalonSRX(RobotMap.RIGHT_MOTOR_THREE.value);
+		rightMotorTwo = new VictorSPX(RobotMap.RIGHT_MOTOR_TWO.value);
+		rightMotorThree = new VictorSPX(RobotMap.RIGHT_MOTOR_THREE.value);
 
 		Robot.initTalon(leftMotorOne);
 		Robot.initTalon(leftMotorTwo);
-		Robot.initTalon(leftMotorThree);
+		Robot.initVictor(leftMotorThree);
 		Robot.initTalon(rightMotorOne);
-		Robot.initTalon(rightMotorTwo);
-		Robot.initTalon(rightMotorThree);
+		Robot.initVictor(rightMotorTwo);
+		Robot.initVictor(rightMotorThree);
 
 		leftMotorTwo.follow(leftMotorOne);
 		leftMotorThree.follow(leftMotorOne);
+		
+		leftMotorTwo.setInverted(true);
+		leftMotorThree.setInverted(true);
+		
 		rightMotorTwo.follow(rightMotorOne);
 		rightMotorThree.follow(rightMotorOne);
+		
 	}
 
 	public void setMotors(double leftValue, double rightValue) {
@@ -49,5 +58,6 @@ public class Drivebase extends Subsystem {
 	}
 
 	public void initDefaultCommand() {
+		setDefaultCommand(new ArcadeDrive());
 	}
 }

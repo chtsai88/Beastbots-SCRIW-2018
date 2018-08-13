@@ -9,16 +9,14 @@ package org.usfirst.frc.team4795.robot;
 
 public enum RobotMap {
 	//CAN Motor mappings
-	LEFT_MOTOR_ONE(0),
-	LEFT_MOTOR_TWO(1),
-	LEFT_MOTOR_THREE(2),
-	RIGHT_MOTOR_ONE(3),
-	RIGHT_MOTOR_TWO(4),
-	RIGHT_MOTOR_THREE(5),
-	//Controller mappings
-	MAIN_CONTROLLER(0),
-	LEFT_JOYSTICK(1),
-	RIGHT_JOYSTICK(2);
+	LEFT_MOTOR_ONE(1),
+	LEFT_MOTOR_TWO(2),
+	LEFT_MOTOR_THREE(3), //Victor SPX
+	RIGHT_MOTOR_ONE(4),
+	RIGHT_MOTOR_TWO(5), //Victor SPX
+	RIGHT_MOTOR_THREE(6), //Victor SPX
+	//Controller mapping
+	MAIN_CONTROLLER(0);
 	
 	public final int value;
 	RobotMap(int value) {
