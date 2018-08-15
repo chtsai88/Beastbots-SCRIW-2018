@@ -25,6 +25,18 @@ public class OI {
 		return Math.abs(raw) < DEADZONE ? 0.0 : raw;
 	}
 
+	public boolean getButtonA() {
+		return CONTROLLER.getRawButton(1);
+	}
+
+	public boolean getButtonX() {
+		return CONTROLLER.getRawButton(3);
+	}
+
+	public boolean getButtonY() {
+		return CONTROLLER.getRawButton(4);
+	}
+
 	public OI() {
 
 	}

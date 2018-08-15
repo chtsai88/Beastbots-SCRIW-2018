@@ -48,8 +48,7 @@ public class Drivebase extends Subsystem {
 		leftMotorThree.setInverted(true);
 		
 		rightMotorTwo.follow(rightMotorOne);
-		rightMotorThree.follow(rightMotorOne);
-		
+		rightMotorThree.follow(rightMotorOne);	
 	}
 
 	public void setMotors(double leftValue, double rightValue) {

@@ -8,6 +8,8 @@
 package org.usfirst.frc.team4795.robot;
 
 import org.usfirst.frc.team4795.robot.subsystems.Drivebase;
+import org.usfirst.frc.team4795.robot.subsystems.Pneumatics;
+
 import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
 import com.ctre.phoenix.motorcontrol.LimitSwitchSource;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -21,11 +23,13 @@ public class Robot extends TimedRobot {
 
 	public static OI oi;
 	public static Drivebase drivebase;
+	public static Pneumatics pneumatics;
 
 	@Override
 	public void robotInit() {
 		oi = new OI();
 		drivebase = new Drivebase();
+		pneumatics = new Pneumatics();
 	}
 
 	@Override
@@ -56,7 +60,7 @@ public class Robot extends TimedRobot {
 	}
 
 	public static void initTalon(TalonSRX motor) {
-		motor.setNeutralMode(NeutralMode.Brake);
+		motor.setNeutralMode(NeutralMode.Coast);
 		motor.neutralOutput();
 		motor.setSensorPhase(false);
 		motor.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, 0);
@@ -66,7 +70,7 @@ public class Robot extends TimedRobot {
 		motor.configClosedloopRamp(0.5, 0);
 	}
 	public static void initVictor(VictorSPX motor) {
-		motor.setNeutralMode(NeutralMode.Brake);
+		motor.setNeutralMode(NeutralMode.Coast);
 		motor.neutralOutput();
 		motor.setSensorPhase(false);
 		motor.configNominalOutputForward(0.0, 0);
