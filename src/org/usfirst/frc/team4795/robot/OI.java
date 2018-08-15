@@ -36,6 +36,10 @@ public class OI {
 	public boolean getButtonY() {
 		return CONTROLLER.getRawButton(4);
 	}
+	
+	public double getRightTrigger() {
+		return Math.abs(CONTROLLER.getRawAxis(3)) < DEADZONE ? 0.0 : CONTROLLER.getRawAxis(3);
+	}
 
 	public OI() {
 

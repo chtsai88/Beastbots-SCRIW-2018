@@ -20,9 +20,10 @@ public class ArcadeDrive extends Command {
 	}
 
 	protected void execute() {
-		double turn = Robot.oi.getLeftJoyY() == 0.0 ? Robot.oi.getRightJoyX() * .8 : Robot.oi.getRightJoyX() * 0.4;
+		double throttle = 0.6 - (0.4 * Robot.oi.getRightTrigger());
+		double turn = Robot.oi.getLeftJoyY() == 0.0 ? Robot.oi.getRightJoyX() * .8 : Robot.oi.getRightJoyX() * 0.5;
 
-		Robot.drivebase.setMotors((Robot.oi.getLeftJoyY() + turn) * 0.7, (Robot.oi.getLeftJoyY() - turn) * 0.7);
+		Robot.drivebase.setMotors((Robot.oi.getLeftJoyY() + turn) * throttle, (Robot.oi.getLeftJoyY() - turn) * throttle);
 	}
 
 	protected boolean isFinished() {
