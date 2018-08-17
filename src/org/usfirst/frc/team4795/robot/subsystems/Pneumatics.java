@@ -26,7 +26,7 @@ public class Pneumatics extends Subsystem {
 			gearShifter.set(DoubleSolenoid.Value.kReverse);
 		}
 	}
-	
+
 	public void fillMeUp() {
 		charles.setClosedLoopControl(true);
 	}

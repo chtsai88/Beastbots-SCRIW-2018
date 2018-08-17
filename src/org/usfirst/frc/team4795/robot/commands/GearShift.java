@@ -20,6 +20,7 @@ public class GearShift extends Command {
 			Robot.pneumatics.fillMeUp();
 		}
 	}
+
 	@Override
 	protected boolean isFinished() {
 		return false;

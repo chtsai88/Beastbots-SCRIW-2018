@@ -41,14 +41,17 @@ public class Drivebase extends Subsystem {
 		Robot.initVictor(rightMotorTwo);
 		Robot.initVictor(rightMotorThree);
 
+		Robot.masterTalon(leftMotorOne);
+		Robot.masterTalon(rightMotorOne);
+
 		leftMotorTwo.follow(leftMotorOne);
 		leftMotorThree.follow(leftMotorOne);
-		
-		leftMotorTwo.setInverted(true);
-		leftMotorThree.setInverted(true);
-		
+
+		leftMotorTwo.setInverted(true); // compensating
+		leftMotorThree.setInverted(true);// for wiring
+
 		rightMotorTwo.follow(rightMotorOne);
-		rightMotorThree.follow(rightMotorOne);	
+		rightMotorThree.follow(rightMotorOne);
 	}
 
 	public void setMotors(double leftValue, double rightValue) {

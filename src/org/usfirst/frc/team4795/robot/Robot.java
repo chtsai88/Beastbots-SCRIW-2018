@@ -59,22 +59,31 @@ public class Robot extends TimedRobot {
 	public void testPeriodic() {
 	}
 
+	public static void masterTalon(TalonSRX motor) {
+		motor.configContinuousCurrentLimit(10, 0);
+		motor.configPeakCurrentLimit(12, 0);
+		motor.configPeakCurrentDuration(20, 0);
+		motor.enableCurrentLimit(true);
+		motor.configClosedloopRamp(2.5, 0);
+	}
+
 	public static void initTalon(TalonSRX motor) {
-		motor.setNeutralMode(NeutralMode.Coast);
+		motor.setNeutralMode(NeutralMode.Brake);
 		motor.neutralOutput();
 		motor.setSensorPhase(false);
 		motor.configForwardLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, 0);
 		motor.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, 0);
 		motor.configNominalOutputForward(0.0, 0);
 		motor.configNominalOutputReverse(0.0, 0);
-		motor.configClosedloopRamp(0.5, 0);
+		motor.configClosedloopRamp(0.0, 0);
 	}
+
 	public static void initVictor(VictorSPX motor) {
-		motor.setNeutralMode(NeutralMode.Coast);
+		motor.setNeutralMode(NeutralMode.Brake);
 		motor.neutralOutput();
 		motor.setSensorPhase(false);
 		motor.configNominalOutputForward(0.0, 0);
 		motor.configNominalOutputReverse(0.0, 0);
-		motor.configClosedloopRamp(0.5, 0);
+		motor.configClosedloopRamp(0.0, 0);
 	}
 }

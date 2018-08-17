@@ -17,12 +17,13 @@ public enum RobotMap {
 	RIGHT_MOTOR_THREE(6), //Victor SPX
 	//Controller mapping
 	MAIN_CONTROLLER(0),
-	//Pneumatics garbage
+	//Pneumatics
 	COMP(0),
 	VALVE_ONE(0),
 	VALVE_TWO(1);
 	
 	public final int value;
+	
 	RobotMap(int value) {
 
 	this.value = value;
