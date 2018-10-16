@@ -15,6 +15,8 @@ public enum RobotMap {
 	RIGHT_MOTOR_ONE(4),
 	RIGHT_MOTOR_TWO(5), //Victor SPX
 	RIGHT_MOTOR_THREE(6), //Victor SPX
+	//Arm Mappings
+	ARM_MOTOR(7),
 	//PWM Mapppings
 	LEFT_MOTOR(1),
 	SHOOT_LEFT(2),

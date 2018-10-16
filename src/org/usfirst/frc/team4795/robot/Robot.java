@@ -9,6 +9,7 @@ package org.usfirst.frc.team4795.robot;
 
 import org.usfirst.frc.team4795.robot.subsystems.Drivebase;
 import org.usfirst.frc.team4795.robot.subsystems.Intake;
+import org.usfirst.frc.team4795.robot.subsystems.Arm;
 import org.usfirst.frc.team4795.robot.subsystems.Pneumatics;
 
 import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
@@ -26,6 +27,7 @@ public class Robot extends TimedRobot {
 	public static Drivebase drivebase;
 	public static Pneumatics pneumatics;
 	public static Intake intake;
+	public static Arm arm;
 
 	@Override
 	public void robotInit() {
@@ -33,6 +35,7 @@ public class Robot extends TimedRobot {
 		drivebase = new Drivebase();
 		pneumatics = new Pneumatics();
 		intake = new Intake();
+		arm = new Arm();
 	}
 
 	@Override
