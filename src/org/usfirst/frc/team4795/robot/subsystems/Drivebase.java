@@ -47,7 +47,7 @@ public class Drivebase extends Subsystem {
 		leftMotorTwo.follow(leftMotorOne);
 		leftMotorThree.follow(leftMotorOne);
 
-		leftMotorTwo.setInverted(true); // compensating
+		leftMotorTwo.setInverted(true); //  compensating
 		leftMotorThree.setInverted(true);// for wiring
 
 		rightMotorTwo.follow(rightMotorOne);

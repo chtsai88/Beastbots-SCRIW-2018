@@ -8,6 +8,7 @@
 package org.usfirst.frc.team4795.robot;
 
 import org.usfirst.frc.team4795.robot.subsystems.Drivebase;
+import org.usfirst.frc.team4795.robot.subsystems.Intake;
 import org.usfirst.frc.team4795.robot.subsystems.Pneumatics;
 
 import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
@@ -24,12 +25,14 @@ public class Robot extends TimedRobot {
 	public static OI oi;
 	public static Drivebase drivebase;
 	public static Pneumatics pneumatics;
+	public static Intake intake;
 
 	@Override
 	public void robotInit() {
 		oi = new OI();
 		drivebase = new Drivebase();
 		pneumatics = new Pneumatics();
+		intake = new Intake();
 	}
 
 	@Override
@@ -64,7 +67,8 @@ public class Robot extends TimedRobot {
 		motor.configPeakCurrentLimit(12, 0);
 		motor.configPeakCurrentDuration(20, 0);
 		motor.enableCurrentLimit(true);
-		motor.configClosedloopRamp(2.5, 0);
+		motor.configOpenloopRamp(0.8, 0);
+		motor.configClosedloopRamp(1.0, 0);
 	}
 
 	public static void initTalon(TalonSRX motor) {
@@ -75,7 +79,6 @@ public class Robot extends TimedRobot {
 		motor.configReverseLimitSwitchSource(LimitSwitchSource.FeedbackConnector, LimitSwitchNormal.NormallyOpen, 0);
 		motor.configNominalOutputForward(0.0, 0);
 		motor.configNominalOutputReverse(0.0, 0);
-		motor.configClosedloopRamp(0.0, 0);
 	}
 
 	public static void initVictor(VictorSPX motor) {
@@ -84,6 +87,5 @@ public class Robot extends TimedRobot {
 		motor.setSensorPhase(false);
 		motor.configNominalOutputForward(0.0, 0);
 		motor.configNominalOutputReverse(0.0, 0);
-		motor.configClosedloopRamp(0.0, 0);
 	}
 }

@@ -37,6 +37,18 @@ public class OI {
 		return CONTROLLER.getRawButton(4);
 	}
 
+	public boolean getButtonB() {
+		return CONTROLLER.getRawButton(5);
+	}
+	
+	public boolean getRightBumper() {
+		return CONTROLLER.getRawButton(6);
+	}
+	
+	public boolean getLeftBumper() {
+		return CONTROLLER.getRawButton(7);
+	}
+	
 	public double getRightTrigger() {
 		return Math.abs(CONTROLLER.getRawAxis(3)) < DEADZONE ? 0.0 : CONTROLLER.getRawAxis(3);
 	}
