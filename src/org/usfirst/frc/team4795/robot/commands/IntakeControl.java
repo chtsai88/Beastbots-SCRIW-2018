@@ -4,20 +4,27 @@ import org.usfirst.frc.team4795.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class GearShift extends Command {
+public class IntakeControl extends Command {
 
-	public GearShift() {
-		requires(Robot.pneumatics);
+	public IntakeControl() {
+		requires(Robot.intake);
 	}
-
+	
 	protected void initialize() {
 	}
 
 	protected void execute() {
-		Robot.pneumatics.whoosh(Robot.oi.getButtonA(), Robot.oi.getButtonX());
+		if (Robot.oi.getButtonB()) {
+			Robot.intake.intake();
+		}
+		if (Robot.oi.getRightBumper()) {
+			Robot.intake.rev();
+		}
+		if (Robot.oi.getLeftBumper()) {
+			Robot.intake.shoot();
+		}
 	}
 
-	@Override
 	protected boolean isFinished() {
 		return false;
 	}
@@ -28,4 +35,5 @@ public class GearShift extends Command {
 	protected void interrupted() {
 		end();
 	}
+
 }

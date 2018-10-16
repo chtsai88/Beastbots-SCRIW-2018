@@ -14,8 +14,8 @@ public class Pneumatics extends Subsystem {
 
 	public Pneumatics() {
 		gearShifter = new DoubleSolenoid(RobotMap.VALVE_ONE.value, RobotMap.VALVE_TWO.value);
-		gearShifter.set(DoubleSolenoid.Value.kOff);
-		charles = new Compressor(RobotMap.COMP.value);
+		gearShifter.set(DoubleSolenoid.Value.kForward);
+		charles = new Compressor();
 	}
 
 	public void whoosh(boolean bool, boolean boolbool) {
@@ -25,10 +25,6 @@ public class Pneumatics extends Subsystem {
 		if (boolbool) {
 			gearShifter.set(DoubleSolenoid.Value.kReverse);
 		}
-	}
-
-	public void fillMeUp() {
-		charles.setClosedLoopControl(true);
 	}
 
 	@Override
