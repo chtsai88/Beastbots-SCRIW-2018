@@ -14,43 +14,65 @@ public class OI {
 	private static final double DEADZONE = 0.2;
 
 	public final Joystick CONTROLLER = new Joystick(RobotMap.MAIN_CONTROLLER.value);
+	public final Joystick ARM_CONTROLLER = new Joystick(RobotMap.ARM_CONTROLLER.value);
 
-	public double getLeftJoyY() {
+	public double getMainLeftJoyY() {
 		final double raw = CONTROLLER.getRawAxis(1);
 		return Math.abs(raw) < DEADZONE ? 0.0 : raw;
 	}
 
-	public double getRightJoyX() {
+	public double getMainRightJoyX() {
 		final double raw = CONTROLLER.getRawAxis(4);
 		return Math.abs(raw) < DEADZONE ? 0.0 : raw;
 	}
 
-	public boolean getButtonA() {
+	public double getMainRightTrigger() {
+		return Math.abs(CONTROLLER.getRawAxis(3)) < DEADZONE ? 0.0 : CONTROLLER.getRawAxis(3);
+	}
+	
+	public boolean getMainButtonA() {
 		return CONTROLLER.getRawButton(1);
 	}
 
-	public boolean getButtonX() {
+	public boolean getMainButtonX() {
 		return CONTROLLER.getRawButton(3);
 	}
+	
+	public double getArmLeftJoyY() {
+		final double raw = ARM_CONTROLLER.getRawAxis(1);
+		return Math.abs(raw) < DEADZONE ? 0.0 : raw;
+	}
+	
+	public boolean getArmButtonA() {
+		return ARM_CONTROLLER.getRawButton(1);
+	}
 
-	public boolean getButtonY() {
-		return CONTROLLER.getRawButton(4);
+	public boolean getArmButtonX() {
+		return ARM_CONTROLLER.getRawButton(3);
 	}
 
-	public boolean getButtonB() {
-		return CONTROLLER.getRawButton(5);
+	public boolean getArmButtonY() {
+		return ARM_CONTROLLER.getRawButton(4);
 	}
 	
-	public boolean getRightBumper() {
-		return CONTROLLER.getRawButton(6);
+	public boolean rightArmButtonYReleased() {
+		return ARM_CONTROLLER.getRawButtonReleased(4);
 	}
 	
-	public boolean getLeftBumper() {
-		return CONTROLLER.getRawButton(7);
+	public boolean getArmRightBumper() {
+		return ARM_CONTROLLER.getRawButton(6);
 	}
-	
-	public double getRightTrigger() {
-		return Math.abs(CONTROLLER.getRawAxis(3)) < DEADZONE ? 0.0 : CONTROLLER.getRawAxis(3);
+
+	public boolean getArmLeftBumper() {
+		return ARM_CONTROLLER.getRawButton(5);
+	}
+
+	public boolean getArmRightTrigger() {
+		return ARM_CONTROLLER.getRawButton(8);
+	}
+
+	public boolean getArmRightTriggerReleased() {
+		return ARM_CONTROLLER.getRawButtonReleased(8);
 	}
 
 	public OI() {

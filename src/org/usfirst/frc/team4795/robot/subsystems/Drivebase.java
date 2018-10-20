@@ -20,38 +20,42 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Drivebase extends Subsystem {
 
 	private TalonSRX rightMotorOne;
-	private VictorSPX rightMotorTwo;
+	private TalonSRX rightMotorTwo;
 	private VictorSPX rightMotorThree;
 	private TalonSRX leftMotorOne;
-	private TalonSRX leftMotorTwo;
+	private VictorSPX leftMotorTwo;
+	
+	
+	
+	
 	private VictorSPX leftMotorThree;
 
 	public Drivebase() {
 		leftMotorOne = new TalonSRX(RobotMap.LEFT_MOTOR_ONE.value);
-		leftMotorTwo = new TalonSRX(RobotMap.LEFT_MOTOR_TWO.value);
+		leftMotorTwo = new VictorSPX(RobotMap.LEFT_MOTOR_TWO.value);
 		leftMotorThree = new VictorSPX(RobotMap.LEFT_MOTOR_THREE.value);
 		rightMotorOne = new TalonSRX(RobotMap.RIGHT_MOTOR_ONE.value);
-		rightMotorTwo = new VictorSPX(RobotMap.RIGHT_MOTOR_TWO.value);
+		rightMotorTwo = new TalonSRX(RobotMap.RIGHT_MOTOR_TWO.value);
 		rightMotorThree = new VictorSPX(RobotMap.RIGHT_MOTOR_THREE.value);
 
 		Robot.initTalon(leftMotorOne);
-		Robot.initTalon(leftMotorTwo);
+		Robot.initVictor(leftMotorTwo);
 		Robot.initVictor(leftMotorThree);
 		Robot.initTalon(rightMotorOne);
-		Robot.initVictor(rightMotorTwo);
+		Robot.initTalon(rightMotorTwo);
 		Robot.initVictor(rightMotorThree);
 
 		Robot.masterTalon(leftMotorOne);
 		Robot.masterTalon(rightMotorOne);
-
+		
+		leftMotorOne.setInverted(true);
+		rightMotorTwo.setInverted(true);		
+		rightMotorThree.setInverted(true);
+		
 		leftMotorTwo.follow(leftMotorOne);
 		leftMotorThree.follow(leftMotorOne);
-
-		leftMotorTwo.setInverted(true); //  compensating
-		leftMotorThree.setInverted(true);// for wiring
-
-		rightMotorTwo.follow(rightMotorOne);
-		rightMotorThree.follow(rightMotorOne);
+		rightMotorThree.follow(rightMotorTwo);
+		
 	}
 
 	public void setMotors(double leftValue, double rightValue) {

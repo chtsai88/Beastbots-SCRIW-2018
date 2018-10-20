@@ -1,6 +1,7 @@
 package org.usfirst.frc.team4795.robot.subsystems;
 
 import org.usfirst.frc.team4795.robot.RobotMap;
+import org.usfirst.frc.team4795.robot.commands.IntakeControl;
 
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Talon;
@@ -43,7 +44,7 @@ public class Intake extends Subsystem {
 	}
 	
 	protected void initDefaultCommand() {
-		// TODO Auto-generated method stub
+		setDefaultCommand(new IntakeControl());
 
 	}
 

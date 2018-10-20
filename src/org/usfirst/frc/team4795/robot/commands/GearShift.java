@@ -14,7 +14,7 @@ public class GearShift extends Command {
 	}
 
 	protected void execute() {
-		Robot.pneumatics.whoosh(Robot.oi.getButtonA(), Robot.oi.getButtonX());
+		Robot.pneumatics.whoosh(Robot.oi.getMainButtonA(), Robot.oi.getMainButtonX());
 	}
 
 	@Override

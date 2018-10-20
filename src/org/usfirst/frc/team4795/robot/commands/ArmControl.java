@@ -6,25 +6,23 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ArmControl extends Command {
 
+	private double throttle;
+	
 	public ArmControl() {
 		requires(Robot.arm);
 	}
-	
+
 	protected void initialize() {
 	}
 
 	protected void execute() {
-		if (Robot.oi.getButtonA()) {
-			if (Robot.oi.getButtonY()) {
-				Robot.arm.setMotor(0.0);
-			} else {
-				Robot.arm.setMotor(1.0);
-			}
-		} else if (Robot.oi.getButtonY()) {
-			Robot.arm.setMotor(-1.0);
+		if (Robot.oi.getArmLeftBumper()) {
+			throttle = 0.5;
 		} else {
-			Robot.arm.setMotor(0.0);
+			throttle = 1.00;
 		}
+
+		Robot.arm.goBitch(throttle * Robot.oi.getArmLeftJoyY());
 	}
 
 	protected boolean isFinished() {

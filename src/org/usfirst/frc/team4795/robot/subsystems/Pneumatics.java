@@ -10,20 +10,31 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Pneumatics extends Subsystem {
 
 	private DoubleSolenoid gearShifter;
-	private Compressor compressor;
+	private DoubleSolenoid intake;
+	private Compressor charles;
 
 	public Pneumatics() {
-		gearShifter = new DoubleSolenoid(RobotMap.VALVE_ONE.value, RobotMap.VALVE_TWO.value);
+		gearShifter = new DoubleSolenoid(RobotMap.SHIFT_VALVE_ONE.value, RobotMap.SHIFT_VALVE_TWO.value);
+		intake = new DoubleSolenoid(RobotMap.ARM_VALVE_ONE.value, RobotMap.ARM_VALVE_TWO.value);
 		gearShifter.set(DoubleSolenoid.Value.kForward);
-		compressor = new Compressor();
+		charles = new Compressor();
 	}
 
-	public void whoosh(boolean forward, boolean backward) {
-		if (forward) {
+	public void whoosh(boolean bool, boolean boolbool) {
+		if (bool) {
 			gearShifter.set(DoubleSolenoid.Value.kForward);
 		}
-		if (backward) {
+		if (boolbool) {
 			gearShifter.set(DoubleSolenoid.Value.kReverse);
+		}
+	}
+	
+	public void clamp(boolean bool, boolean boolbool) {
+		if (bool) {
+			intake.set(DoubleSolenoid.Value.kForward);
+		}
+		if (boolbool) {
+			intake.set(DoubleSolenoid.Value.kReverse);
 		}
 	}
 

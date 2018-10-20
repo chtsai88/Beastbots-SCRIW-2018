@@ -7,9 +7,10 @@
 
 package org.usfirst.frc.team4795.robot;
 
+import org.usfirst.frc.team4795.robot.commands.DriveForward;
+import org.usfirst.frc.team4795.robot.subsystems.Arm;
 import org.usfirst.frc.team4795.robot.subsystems.Drivebase;
 import org.usfirst.frc.team4795.robot.subsystems.Intake;
-import org.usfirst.frc.team4795.robot.subsystems.Arm;
 import org.usfirst.frc.team4795.robot.subsystems.Pneumatics;
 
 import com.ctre.phoenix.motorcontrol.LimitSwitchNormal;
@@ -27,6 +28,7 @@ public class Robot extends TimedRobot {
 	public static Drivebase drivebase;
 	public static Pneumatics pneumatics;
 	public static Intake intake;
+	public static DriveForward drive;
 	public static Arm arm;
 
 	@Override
@@ -36,6 +38,7 @@ public class Robot extends TimedRobot {
 		pneumatics = new Pneumatics();
 		intake = new Intake();
 		arm = new Arm();
+		
 	}
 
 	@Override
@@ -48,6 +51,7 @@ public class Robot extends TimedRobot {
 	}
 
 	public void autonomousInit() {
+		Scheduler.getInstance().add(new DriveForward(5));
 	}
 
 	public void autonomousPeriodic() {

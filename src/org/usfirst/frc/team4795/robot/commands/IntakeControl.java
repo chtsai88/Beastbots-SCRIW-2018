@@ -14,15 +14,16 @@ public class IntakeControl extends Command {
 	}
 
 	protected void execute() {
-		if (Robot.oi.getButtonB()) {
+		if (Robot.oi.getArmRightBumper()) {
 			Robot.intake.intake();
 		}
-		if (Robot.oi.getRightBumper()) {
+		if (Robot.oi.getArmRightTrigger()) {
 			Robot.intake.rev();
 		}
-		if (Robot.oi.getLeftBumper()) {
+		if (Robot.oi.getArmRightTriggerReleased()) {
 			Robot.intake.shoot();
 		}
+		Robot.pneumatics.clamp(Robot.oi.getArmButtonA(), Robot.oi.getArmButtonX());
 	}
 
 	protected boolean isFinished() {

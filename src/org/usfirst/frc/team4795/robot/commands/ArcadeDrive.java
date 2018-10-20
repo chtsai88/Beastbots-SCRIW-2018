@@ -7,8 +7,9 @@
 
 package org.usfirst.frc.team4795.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc.team4795.robot.Robot;
+
+import edu.wpi.first.wpilibj.command.Command;
 
 public class ArcadeDrive extends Command {
 
@@ -20,10 +21,10 @@ public class ArcadeDrive extends Command {
 	}
 
 	protected void execute() {
-		double throttle = 0.6 - (0.4 * Robot.oi.getRightTrigger());
-		double turn = Robot.oi.getLeftJoyY() == 0.0 ? Robot.oi.getRightJoyX() * .8 : Robot.oi.getRightJoyX() * 0.5;
+		double throttle = 0.9 - (0.4 * Robot.oi.getMainRightTrigger());
+		double turn = Robot.oi.getMainLeftJoyY() == 0.0 ? Robot.oi.getMainRightJoyX() * .8 : Robot.oi.getMainRightJoyX() * 0.5;
 
-		Robot.drivebase.setMotors((Robot.oi.getLeftJoyY() + turn) * throttle, (Robot.oi.getLeftJoyY() - turn) * throttle);
+		Robot.drivebase.setMotors((Robot.oi.getMainLeftJoyY() + turn) * throttle, (Robot.oi.getMainLeftJoyY() - turn) * throttle);
 	}
 
 	protected boolean isFinished() {
